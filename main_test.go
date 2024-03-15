@@ -5,13 +5,17 @@ import (
 	"testing"
 	"time"
 
+	"github.com/ccardenosa/front-back-app/backend"
+	"github.com/ccardenosa/front-back-app/database"
 	"github.com/ccardenosa/front-back-app/frontend"
 )
 
 func TestFrontend(t *testing.T) {
 
 	t.Log("Start Frontend server")
-	go frontend.StartFrontEnd()
+	go database.StartDatabase(dbConfig)
+	go backend.StartBackend(beConfig)
+	go frontend.StartFrontend(ftConfig)
 	time.Sleep(5)
 
 	resp, err := http.Get("http://localhost:28080/")

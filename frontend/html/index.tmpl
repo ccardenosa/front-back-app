@@ -1,0 +1,23 @@
+
+<!doctype html>
+<head><bold>{{.Title}}</bold></head>
+<body>
+	<form action="/" method="POST">
+			<br>
+			<label for="fname">First name:</label>
+  		<input type="text" id="name" name="name" value=""><br>
+			<p>Choose your favourite programming language</p>
+			{{range .Lang}}
+		  <input type="radio" id="{{.}}" name="fav_language" value="{{.}}">
+		  <label for="{{.}}">{{.}}</label>
+			<br>
+			{{end}}
+		  <input type="radio" id="other" name="fav_language" value="Other">
+		  <label for="other">Other</label>
+			<br>
+			<label for="newlang">New language:</label>
+  		<input type="text" id="new_lang" name="new_language" value=""><br>
+			<br><br>
+			<input type="submit">
+	</form>
+</body>

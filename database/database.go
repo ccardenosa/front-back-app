@@ -4,8 +4,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-const listenUri = "0.0.0.0:28887"
-
 type Config struct {
 	ListenUri string
 }
