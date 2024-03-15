@@ -1,8 +1,6 @@
 package backend
 
 import (
-	"log"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -78,17 +76,11 @@ func getDevelHandler(c *gin.Context) {
 func postDevelHandler(c *gin.Context) {
 	var h developerType
 	c.ShouldBindJSON(&h)
-	log.Println("1.- ", developers)
-	log.Println("1.- ", languages)
 	_, exists := developers[h.Name]
 	if exists {
 		languages[developers[h.Name]]--
 	}
-	log.Println("2.- ", developers)
-	log.Println("2.- ", languages)
 	developers[h.Name] = h.FavouriteLanguage
 	languages[h.FavouriteLanguage]++
-	log.Println("3.- ", developers)
-	log.Println("3.- ", languages)
 	c.JSON(200, gin.H{"Ranking": languages})
 }
